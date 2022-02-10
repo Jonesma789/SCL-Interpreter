@@ -1,0 +1,29 @@
+forward declarations
+    function main return integer
+    function f1 return integer
+implementations
+    function main is
+        variables
+            define fib of type integer
+            define n of type integer
+        begin
+            display "This program will compute the nth fibonacci number and disply it."
+            input "Select a number for n", n
+            set fib = call f1, parameters, n
+            display "The ", n, "th fibonacci number is: ", fib, "."
+
+
+    endfun main
+
+    function f1 is
+        parameters
+            define n of type integer
+        variables
+        begin
+            if (n < 3) then
+                return 1
+            else
+                return (call f1, parameters, n-1) + (call f1, parameters, n-2)
+            endif
+
+    endfun f1

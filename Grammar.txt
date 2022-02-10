@@ -1,0 +1,64 @@
+<program> --> [<forward_declare>] [<implementation>]
+
+<forward_declare> --> forward declarations <function_proto>*
+
+<function_proto> --> function <id> return <type>
+
+<implementation> --> implementations <function>*
+
+<function> --> function <id> is [<parameter_list>] <varribale_list> begin <statement>* endfun <id>
+
+<parameter_list> --> parameters <definition>*
+
+<varibale_list> --> variables <definition>*
+
+<definition> --> define <id> of type <type>
+
+<type> --> float
+           integer
+           bool
+	   string
+
+<statement> --> <assignment>
+                <ctrl_statement>
+		<io_statement>
+                <function_call>
+		<return_statement>
+
+<asignment> --> set <id> = <expr>	
+
+<expr> --> <term> {(AND | OR | == | > | < | >= | <=) <expr>}
+
+<term> --> <factor> {(+ | -) <term>}
+
+<factor> --> <primary> {(* | /) <factor>}
+
+
+<primary> --> FLOAT_LIT
+	      INT_LIT
+	      BOOL_LIT
+	      STRING_LIT
+              ( <expr> )
+              <id>
+              <function_call>
+
+<id> --> IDENT
+
+<ctrl_statement> --> <if_statement> 
+                     <loop>
+
+<if_statement> --> if <expr> then <statement>* {elseif <expr> then <statement>*} [else <statement>*] endif
+
+<loop> --> <for_loop> 
+           <while_loop>
+
+<for_loop> --> for <id> = <expr> to <expr> do <statement>* endfor
+
+<while_loop> --> while <expr> do <statement>* endwhile
+
+<io_statement> --> input STRING_LIT COMMA <id>
+		   display <expr>{COMMA<expr>}
+
+<function_call> --> call <id>, parameters, {<expr>,}
+
+<return_statement> --> return <expr>

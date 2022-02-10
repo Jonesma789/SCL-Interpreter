@@ -1,0 +1,21 @@
+implementations
+    function main is
+        variables
+            define a of type integer
+            define b of type integer
+        begin
+            display "This method will compare two numbers."
+
+            input "Insert first value", a
+
+            input "Insert second value", b
+
+            if a > b then
+                display "The first value was larger"
+            elseif b > a then
+                display "The second value was bigger"
+            else
+                display "The values are equal"
+            endif
+
+    endfun main
