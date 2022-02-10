@@ -11,22 +11,6 @@ int charClass;
 int token;
 map<string, int> reservedWords;
 map<string, int> symbols;
-/*
-int main() { // This is the main driver for the scanner. It populates the reserved words and reserved symbol tables,
-             // opens the input scl file, and runs lex until the EOF is reached.
-    populateReseservedWordsAndSymbols();
-    inputFile.open("test.scl");
-    if(inputFile.fail()) {
-        cout << "unable to open file. check file name and try again" << endl;
-        exit(1);
-    }else {
-        getChar();
-        while(!inputFile.eof()) {
-            lex();
-        }
-    }
-
-}*/
 
 void getChar() { // This function is used to read in characters from the input file. it uses the "get()" 
                  // function from ifstreams to read in the next character from the input file and saves 
