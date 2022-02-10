@@ -4,14 +4,15 @@
 using namespace std;
 
 /*
-This program is a recursive-descent parser for a subset of the SCL grammar. The subset is designed to be able to handle SCL code that can create 
-forward declarations of functions; multiple functions; basic arithmetic; basic logic expressions; three kinds of control statements: if 
-statements, for loops, and while loops; input and output statements, and return types for functions. The language defines 4 basic data types: 
-integers, floats, booleans (called bool), and strings. Since this is a recursive descent parser, each non-terminal symbol in the grammar has its
-own function. Those functions are code representations of the grammar rules. For any non-terminal that apears on the Right Hand Side(RHS) of a 
-grammar rule, the code calls that non-terminal's function. For optional or multiple non-terminals, if statements and loops are used, respectively.
-Each call to the function lex() i a call to the scanner from deliverable 1. It consumes the current token and loads the next token to be parsed. 
-For the full list of grammar rules, see the Grammar.txt file included with the project submision.
+This program is a recursive-descent parser for my defined SCL grammar. The languages is designed so that it can handle forward declarations of 
+functions; multiple functions; basic arithmetic; basic logic expressions; three kinds of control statements: if statements, for loops, and while 
+loops; input and output statements, and return types for functions. The language defines 4 basic data types: integers, floats, booleans (called 
+bool), and strings. Since this is a recursive descent parser, each non-terminal symbol in the grammar has its own function. Those functions are 
+code representations of the grammar rules. For any non-terminal that apears on the Right Hand Side(RHS) of a grammar rule, the code calls that 
+non-terminal's function. For optional or multiple non-terminals, if statements and loops are used, respectively. Each call to the function lex() 
+is a call to the scanner from deliverable 1. It consumes the current token and loads the next token to be parsed. 
+
+For the full list of grammar rules, see the Grammar.txt file included.
 */
 
 int main(int argc, char ** argv) { //This is the main driver program for the parser. It populates the reservedWords and symbols tables for the scanner, opens the input 
@@ -21,11 +22,10 @@ int main(int argc, char ** argv) { //This is the main driver program for the par
     if(argc > 1) {
         inputFile.open(argv[1]);
     }else {
-        inputFile.open("test4.scl");
+        error("Must include file name as part of command line arguments.");
     }
     if(inputFile.fail()) {
-        cout << "unable to open file. check file name and try again" << endl;
-        exit(1);
+        error("Unable to open file. Check file name and try again.");
     }
     getChar();
     lex();
